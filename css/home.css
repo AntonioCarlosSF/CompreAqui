@@ -1,0 +1,91 @@
+        /* Definindo o layout da página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Estilo para o cabeçalho */
+        header {
+            background-color: #ffcc00; /* Amarelo */
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Barra de navegação */
+        nav {
+            background-color: #d32f2f; /* Vermelho */
+            overflow: hidden;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #ff5722; /* Tom de laranja mais claro */
+        }
+
+        /* Seção principal de destaque */
+        .main-section {
+            background-color: #ffcc00; /* Amarelo */
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .main-section h2 {
+            font-size: 2.5em;
+        }
+
+        .main-section p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Área de serviços ou informações */
+        .services {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+
+        .service {
+            background-color: #ff5722; /* Vermelho */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            width: 30%;
+        }
+
+        .service h3 {
+            font-size: 1.8em;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
