@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
-//const routes = require("./routes");
+const UserRoutes = require("../routes/UserRoutes");
 
 
 
@@ -14,10 +14,15 @@ mongoose.connect(process.env.CONNECTSTRING).then(() => {
   console.log("Conexão com o banco de dados realizada com sucesso!");
 });
 
-//app.use(cors(
-//    {origin: "http://localhost:3001",} // Permite que o front-end acesse o back-end
-//))
+app.use(cors());
 
+// Permitir que o front-end acesse o back-end (Ajuste o origin conforme sua necessidade)
+//app.use(cors({
+  //origin: "http://localhost:3000", // URL do seu frontend
+  //methods: "GET,POST", // Métodos permitidos
+  //allowedHeaders: "Content-Type", // Cabeçalhos permitidos
+  //credentials: true, // Permite o envio de cookies
+//}));
 app.use(express.json()); // Middleware para o express entender JSON
 app.use(express.urlencoded({ extended: true })); // Middleware para o express entender formulários
 
@@ -43,8 +48,17 @@ app.get("/", (req, res) => {
     res.json("Olá do back");
 });
 
+app.post('/Users', (req, res) => {
+  const { nome, email, senha, tipo } = req.body;
+  if (!nome || !email || !senha) {
+      return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
+  }
+  // Simula um sucesso no cadastro
+  res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
+});
+
 // rota
-//app.use(routes);
+app.use(UserRoutes);
 
 let port = 3000; 
 app.listen(port, () => {

@@ -1,0 +1,97 @@
+/* Resetando margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definindo fonte padrão */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8f1; /* Fundo mais claro para combinar com o verde */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Estilizando o título */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #2c6f3f; /* Verde escuro para o título */
+    margin-bottom: 20px;
+}
+
+/* Estilizando o formulário */
+form {
+    background-color: #fff; /* Fundo branco para o formulário */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Estilizando os labels */
+label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #2c6f3f; /* Cor verde para os labels */
+}
+
+/* Estilizando os inputs */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #dcdcdc; /* Cor neutra para a borda */
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #f9f9f9; /* Cor de fundo suave nos campos */
+}
+
+/* Estilizando o botão */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50; /* Verde vibrante */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Verde mais escuro ao passar o mouse */
+}
+
+/* Estilizando mensagens de erro */
+.alert {
+    color: red;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+        width: 100%;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    button {
+        font-size: 1em;
+    }
+}

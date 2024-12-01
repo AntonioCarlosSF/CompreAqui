@@ -1,9 +1,9 @@
-const express = require("express");
+const express = require("../API/node_modules/express");
 const router = express.Router();
 const Usuario = require("../models/UserModels"); // Importa o modelo
 
 // Rota POST para criar um usuário
-router.post("/usuarios", async (req, res) => {
+router.post("/Users", async (req, res) => {
     try {
         const usuario = new Usuario(req.body); // Cria o usuário com os dados do corpo da requisição
         const usuarioSalvo = await usuario.save(); // Salva no MongoDB

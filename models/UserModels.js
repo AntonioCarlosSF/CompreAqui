@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
-const bcrypt = require("bcryptjs");
+const mongoose = require("../API/node_modules/mongoose");
+const validator = require("../API/node_modules/validator");
+const bcrypt = require("../API/node_modules/bcryptjs");
 
-const UsuarioSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     nome: { 
         type: String, 
         required: [true, "O nome é obrigatório."], 
@@ -32,7 +32,7 @@ const UsuarioSchema = new mongoose.Schema({
 });
 
 // Middleware para criptografar a senha antes de salvar
-UsuarioSchema.pre("save", async function (next) {
+UserSchema.pre("save", async function (next) {
     if (!this.isModified("senha")) return next(); // Evita criptografia se a senha não foi alterada
 
     try {
@@ -45,11 +45,11 @@ UsuarioSchema.pre("save", async function (next) {
 });
 
 // Método para comparar a senha digitada com a armazenada
-UsuarioSchema.methods.compararSenha = async function (senhaDigitada) {
+UserSchema.methods.compararSenha = async function (senhaDigitada) {
     return bcrypt.compare(senhaDigitada, this.senha);
 };
 
 // Exporta o modelo de usuário
-const UsuarioModel = mongoose.model("Usuario", UsuarioSchema);
+const UserModel = mongoose.model("User", UserSchema);
 
-module.exports = UsuarioModel;
+module.exports = UserModel;
