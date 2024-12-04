@@ -1,4 +1,4 @@
-const mongoose = require("../API/node_modules/mongoose");
+const mongoose = require("../API/node_modules/mongoose/types");
 const validator = require("../API/node_modules/validator");
 const bycrypt = require("../API/node_modules/bcryptjs");
 

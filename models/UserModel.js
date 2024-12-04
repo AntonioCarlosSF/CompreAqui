@@ -2,6 +2,7 @@ const mongoose = require("../API/node_modules/mongoose");
 const validator = require("../API/node_modules/validator");
 const bcrypt = require("../API/node_modules/bcryptjs");
 
+// Definição do esquema do usuário
 const UserSchema = new mongoose.Schema({
     nome: { 
         type: String, 
@@ -22,8 +23,30 @@ const UserSchema = new mongoose.Schema({
     },
     tipoUsuario: { 
         type: String, 
-        enum: ["usuario", "admin"],  // Exemplo de tipos de usuários
+        enum: ["usuario", "admin"],  // Tipos de usuários permitidos
         default: "usuario" 
+    },
+    cpf: {
+        type: String,
+        required: [true, "O CPF é obrigatório."],
+        unique: true,
+        validate: {
+            validator: function (cpf) {
+                return /^[0-9]{11}$/.test(cpf); // Valida formato numérico de 11 dígitos
+            },
+            message: "CPF inválido."
+        }
+    },
+    anoNascimento: {
+        type: Number,
+        required: [true, "O ano de nascimento é obrigatório."],
+        validate: {
+            validator: function (ano) {
+                const currentYear = new Date().getFullYear();
+                return ano >= 1900 && ano <= currentYear;
+            },
+            message: "Ano de nascimento inválido."
+        }
     },
     dataCriacao: { 
         type: Date, 

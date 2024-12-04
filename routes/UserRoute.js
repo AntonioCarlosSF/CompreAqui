@@ -1,6 +1,6 @@
 const express = require("../API/node_modules/express");
 const router = express.Router();
-const Usuario = require("../models/UserModels"); // Importa o modelo
+const Usuario = require("../models/UserModel"); // Importa o modelo
 
 // Rota POST para criar um usuário
 router.post("/Users", async (req, res) => {

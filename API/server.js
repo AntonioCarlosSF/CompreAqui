@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
-const UserRoutes = require("../routes/UserRoutes");
+const UserRoutes = require("../routes/UserRoute");
 
 
 
@@ -48,14 +48,51 @@ app.get("/", (req, res) => {
     res.json("Olá do back");
 });
 
-app.post('/Users', (req, res) => {
-  const { nome, email, senha, tipo } = req.body;
-  if (!nome || !email || !senha) {
+
+// Rota para criar um novo usuário
+UserRoutes.post('/Users', async (req, res) => {
+  const { nome, email, senha, tipoUsuario, cpf, anoNascimento } = req.body;
+
+  // Validações básicas
+  if (!nome || !email || !senha || !cpf || !anoNascimento) {
       return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
   }
-  // Simula um sucesso no cadastro
-  res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
+
+  try {
+      // Cria um novo usuário usando o modelo
+      const newUser = new UserModel({
+          nome,
+          email,
+          senha,
+          tipoUsuario: tipoUsuario || 'usuario', // Define "usuario" como padrão, se não for informado
+          cpf,
+          anoNascimento
+      });
+
+      // Salva o usuário no banco de dados
+      const savedUser = await newUser.save();
+      res.status(201).json({ 
+          message: 'Usuário cadastrado com sucesso!', 
+          user: {
+              id: savedUser._id,
+              nome: savedUser.nome,
+              email: savedUser.email,
+              tipoUsuario: savedUser.tipoUsuario,
+              cpf: savedUser.cpf,
+              anoNascimento: savedUser.anoNascimento,
+              dataCriacao: savedUser.dataCriacao
+          }
+      });
+  } catch (error) {
+      if (error.code === 11000) {
+          // Trata erro de duplicidade (e-mail ou CPF)
+          return res.status(400).json({ message: 'E-mail ou CPF já cadastrado!' });
+      }
+      console.error('Erro ao salvar usuário:', error);
+      res.status(500).json({ message: 'Erro interno do servidor.' });
+  }
 });
+
 
 // rota
 app.use(UserRoutes);
