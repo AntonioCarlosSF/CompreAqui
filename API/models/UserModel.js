@@ -1,6 +1,6 @@
-const mongoose = require("../API/node_modules/mongoose");
-const validator = require("../API/node_modules/validator");
-const bcrypt = require("../API/node_modules/bcryptjs");
+const mongoose = require("mongoose");
+const validator = require("validator");
+const bcrypt = require("bcryptjs");
 
 // Definição do esquema do usuário
 const UserSchema = new mongoose.Schema({
@@ -54,25 +54,43 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
-// Middleware para criptografar a senha antes de salvar
-UserSchema.pre("save", async function (next) {
-    if (!this.isModified("senha")) return next(); // Evita criptografia se a senha não foi alterada
+// Exporta o modelo de usuário
+const UserModel = mongoose.model("User", UserSchema);
 
-    try {
-        const salt = await bcrypt.genSalt(10);
-        this.senha = await bcrypt.hash(this.senha, salt);
-        next();
-    } catch (err) {
-        next(err);
+function User(body){
+    this.body = body;
+    this.user = null;
+}
+
+User.prototype.register = async function(){
+    try{
+        const salt = bcrypt.genSaltSync();
+        this.body.senha = bcrypt.hashSync(this.body.senha, salt)
+        this.user = await UserModel.create(this.body);
+    }catch(error){
+        console.log('Erro ao criar o usuário', error);
     }
-});
+}
+
+
+// // Middleware para criptografar a senha antes de salvar
+// UserSchema.pre("save", async function (next) {
+//     if (!this.isModified("senha")) return next(); // Evita criptografia se a senha não foi alterada
+
+//     try {
+//         const salt = await bcrypt.genSalt(10);
+//         this.senha = await bcrypt.hash(this.senha, salt);
+//         next();
+//     } catch (err) {
+//         next(err);
+//     }
+// });
+
 
 // Método para comparar a senha digitada com a armazenada
 UserSchema.methods.compararSenha = async function (senhaDigitada) {
     return bcrypt.compare(senhaDigitada, this.senha);
 };
 
-// Exporta o modelo de usuário
-const UserModel = mongoose.model("User", UserSchema);
 
-module.exports = UserModel;
+module.exports = User;
