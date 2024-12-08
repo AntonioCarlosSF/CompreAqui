@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
-const UserRoutes = require("../routes/UserRoute");
+const UserRoutes = require("./route.js");
 
 
 
