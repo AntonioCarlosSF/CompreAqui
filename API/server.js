@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
 
 
 // Rota para criar um novo usuário
-UserRoutes.post('/Users', async (req, res) => {
+UserRoutes.post('/users', async (req, res) => {
   const { nome, email, senha, tipoUsuario, cpf, anoNascimento } = req.body;
 
   // Validações básicas

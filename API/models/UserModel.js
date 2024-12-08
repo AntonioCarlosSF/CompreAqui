@@ -30,12 +30,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "O CPF é obrigatório."],
         unique: true,
-        validate: {
-            validator: function (cpf) {
-                return /^[0-9]{11}$/.test(cpf); // Valida formato numérico de 11 dígitos
-            },
-            message: "CPF inválido."
-        }
+        // validate: {
+        //     validator: function (cpf) {
+        //         return /^[0-9]{11}$/.test(cpf); // Valida formato numérico de 11 dígitos
+        //     },
+        //     message: "CPF inválido."
+        // }
     },
     anoNascimento: {
         type: Number,
@@ -71,6 +71,8 @@ User.prototype.register = async function(){
         console.log('Erro ao criar o usuário', error);
     }
 }
+
+
 
 
 // // Middleware para criptografar a senha antes de salvar
