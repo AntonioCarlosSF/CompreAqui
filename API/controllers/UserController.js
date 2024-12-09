@@ -49,29 +49,12 @@ exports.register = async (req, res) => {
 
 
 exports.login = async (req, res) => {
-    const { email, password } = req.body;
-
-    // Verifica se o e-mail e senha foram fornecidos
-    if (!email || !password) {
-        return res.status(400).json({ message: 'Email e senha são obrigatórios.' });
-    }
-
     try {
-        // Busca o usuário no banco de dados
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(404).json({ message: 'Usuário não encontrado.' });
-        }
-
-        // Compara a senha fornecida com a armazenada no banco de dados
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) {
-            return res.status(401).json({ message: 'Credenciais inválidas.' });
-        }
-
+        const user = new User(req.body);
+        await user.login();
         res.status(200).json({
             message: 'Login bem-sucedido!',
-            token,
+            user: user
         });
     } catch (error) {
         console.error('Erro no login:', error);
