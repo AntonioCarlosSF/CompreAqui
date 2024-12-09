@@ -72,12 +72,12 @@ User.prototype.register = async function(){
     }
 }
 
-User.prototype.login = async function(email, password){
+User.prototype.login = async function(){
      // Busca o usuário no banco de dados
             try{
-                const user = await UserModel.findOne({email});
-                const isPasswordValid = await bcrypt.compare(password, user.password);
-                return user;
+                 this.user = await UserModel.findOne({email : this.body.email});
+                const isPasswordValid = await bcrypt.compareSync(this.body.senha, this.user.senha);
+                return;
             }catch(err){
                 console.log("deu errado mané", err.message)
             }
