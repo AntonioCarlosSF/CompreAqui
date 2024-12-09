@@ -3,7 +3,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
     // Captura os dados do formulário
     const email = document.getElementById('email').value;
-    const password = document.getElementById('senha').value;
+    const senha = document.getElementById('senha').value;
 
     try {
         // Faz a requisição POST para o backend
@@ -12,7 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email, senha }),
         });
 
         const data = await response.json();

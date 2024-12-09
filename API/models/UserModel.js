@@ -74,12 +74,36 @@ User.prototype.register = async function(){
 
 User.prototype.login = async function(){
      // Busca o usuário no banco de dados
+        const user = await UserModel.findOne({ email: this.body.email });
+            if (!user) {
+                console.log("Usuário não encontrado.");
+                return false;
+            }
+
             try{
                  this.user = await UserModel.findOne({email : this.body.email});
-                const isPasswordValid = await bcrypt.compareSync(this.body.senha, this.user.senha);
+                // const senhaValida = await bcrypt.compareSync(this.body.senha, this.user.senha);
+
+                if (!user.senha) {
+                    console.log("Senha não encontrada no banco de dados.");
+                    return false;
+                }
+        
+                // Debug: Verifique os valores antes da comparação
+                console.log("Senha fornecida:", this.body.senha);
+                console.log("Senha armazenada:", user.senha);
+
+                const senhaValida = await bcrypt.compareSync(this.body.senha, this.user.senha);
+
+                if (!senhaValida) {
+                    console.log("Senha inválida.");
+                    return false;
+                }
+                // Se tudo estiver correto, retorna o usuário
+                this.user = user;
                 return;
-            }catch(err){
-                console.log("deu errado mané", err.message)
+            }catch(error){
+                console.log("Message:", error.message)
             }
 
      // Compara a senha fornecida com a armazenada no banco de dados
