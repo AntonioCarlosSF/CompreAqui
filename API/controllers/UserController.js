@@ -48,17 +48,36 @@ exports.register = async (req, res) => {
 //     };
 
 
+// exports.login = async (req, res) => {
+//     try {
+//         const user = new User(req.body);
+//         await user.login();
+//         res.status(200).json({
+//             message: 'Login bem-sucedido!',
+//             user: user
+//         });
+//     } catch (error) {
+//         console.error('Erro no login:', error);
+//         res.status(500).json({ message: 'Erro interno do servidor.' });
+//     }
+// };
+
 exports.login = async (req, res) => {
     try {
         const user = new User(req.body);
-        await user.login();
+        const isAuthenticated = await user.login();
+
+        if (!isAuthenticated) {
+            return res.status(401).json({ message: "Credenciais inválidas." });
+        }
+
         res.status(200).json({
-            message: 'Login bem-sucedido!',
-            user: user
+            message: "Login bem-sucedido!",
+            user: { id: user.user._id, email: user.user.email },
         });
     } catch (error) {
-        console.error('Erro no login:', error);
-        res.status(500).json({ message: 'Erro interno do servidor.' });
+        console.error("Erro no login:", error);
+        res.status(500).json({ message: "Erro interno do servidor." });
     }
 };
 

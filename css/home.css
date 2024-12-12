@@ -1,160 +1,204 @@
-
 /* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Definindo o layout da página */
-body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5; /* Fundo claro e neutro */
-    color: #333;
-    line-height: 1.6;
 }
 
-/* Estilo para o cabeçalho */
+body {
+    background-color: rgb(57, 47, 108);
+    color: rgb(208, 250, 248);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 0 20px;
+}
+
+/* Header */
 header {
-    background-color: #4CAF50; /* Verde vibrante */
-    padding: 60px 20px;
     text-align: center;
-    color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 header h1 {
-    font-size: 3em;
-    font-weight: bold;
-    letter-spacing: 3px;
+    font-size: 3rem;
+    color: rgb(208, 250, 248);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin-bottom: 10px;
 }
 
 header p {
-    font-size: 1.2em;
-    margin-top: 10px;
-    font-weight: 300;
+    font-size: 1.2rem;
+    color: rgb(255, 183, 77);
 }
 
-/* Barra de navegação */
+/* Navegação */
 nav {
-    background-color: #388E3C; /* Tom de verde mais escuro */
     display: flex;
     justify-content: center;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    gap: 25px;
+    background-color: rgb(103, 97, 138);
+    padding: 15px 20px;
+    border-radius: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1.5s ease-in-out;
 }
 
 nav a {
-    color: white;
     text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1em;
-    padding: 12px 20px;
-    margin: 0 15px;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    color: rgb(208, 250, 248);
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 5px 15px;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 nav a:hover {
-    background-color: #66BB6A; /* Verde mais claro para hover */
-    transform: scale(1.05);
+    background-color: rgb(255, 183, 77);
+    transform: translateY(-3px);
 }
 
-/* Seção principal de destaque */
+nav a:active {
+    transform: translateY(1px);
+}
+
+/* Main Section */
 .main-section {
-    background-color: #ffffff; /* Fundo branco */
-    color: #4CAF50; /* Verde para o texto */
     text-align: center;
-    padding: 80px 20px;
-    position: relative;
-    z-index: 1;
+    margin: 30px 0;
+    padding: 40px;
+    background-color: rgb(208, 250, 248);
+    color: rgb(57, 47, 108);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-in-out;
+    max-width: 900px;
+    width: 100%;
 }
 
 .main-section h2 {
-    font-size: 3em;
-    font-weight: 700;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
 .main-section p {
-    font-size: 1.2em;
+    font-size: 1.2rem;
+    line-height: 1.6;
     max-width: 800px;
     margin: 0 auto;
-    line-height: 1.6;
 }
 
-/* Seção de serviços */
+/* Serviços */
 .services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    justify-content: center;
     gap: 30px;
-    padding: 60px 20px;
-    background-color: #f9f9f9; /* Fundo neutro para contraste */
+    flex-wrap: wrap;
+    margin: 40px 0;
 }
 
 .service {
-    background-color: #388E3C; /* Verde escuro */
-    color: white;
-    padding: 40px 30px;
-    border-radius: 12px;
+    background-color: rgb(208, 250, 248);
+    color: rgb(57, 47, 108);
+    padding: 25px;
+    border-radius: 15px;
+    width: 280px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.service h3 {
-    font-size: 2em;
-    margin-bottom: 15px;
-}
-
-.service p {
-    font-size: 1.1em;
-    line-height: 1.6;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: slideUp 1.5s ease-in-out;
+    margin-bottom: 30px;
 }
 
 .service:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Rodapé */
+.service h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.service p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Footer */
 footer {
-    background-color: #333;
-    color: #fff;
     text-align: center;
-    padding: 30px 20px;
-    margin-top: 40px;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: rgb(57, 47, 108);
+    color: rgb(208, 250, 248);
+    font-size: 1rem;
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease-in-out;
 }
 
 footer p {
-    font-size: 1em;
-    margin: 0;
+    font-size: 1rem;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5em;
-    }
-
-    header p {
-        font-size: 1.1em;
-    }
-
-    .main-section h2 {
-        font-size: 2.5em;
-    }
-
-    .main-section p {
-        font-size: 1.1em;
+    .main-section {
+        padding: 20px;
     }
 
     .services {
-        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    nav a {
-        padding: 10px 15px;
-        font-size: 0.9em;
+    .service {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
     }
 }

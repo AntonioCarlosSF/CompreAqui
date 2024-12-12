@@ -2,7 +2,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     event.preventDefault(); // Impede o envio padrão do formulário
 
     // Captura os dados do formulário
-    const email = document.getElementById('email').value;
+    const email = document.getElementById('email').value.trim();
     const senha = document.getElementById('senha').value;
 
     try {
@@ -20,14 +20,15 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         if (response.ok) {
             // Login bem-sucedido
             alert('Login bem-sucedido!');
-            // Você pode redirecionar o usuário para outra página, por exemplo:
-            window.location.href = 'dashboard.html'; // Ajuste para a página desejada
+            window.location.href = 'home.html'; // Redireciona para a página inicial ou desejada
         } else {
             // Exibe mensagem de erro retornada pelo servidor
-            document.getElementById('message').innerText = data.message || 'Erro ao fazer login.';
+            
+            const errorMessage = data.message || 'Erro ao fazer login. Por favor, tente novamente.';
+            document.getElementById('message').innerText = errorMessage;
         }
     } catch (error) {
-        console.error('Erro ao fazer login:', error);
-        document.getElementById('message').innerText = 'Erro ao conectar ao servidor.';
+        // Trata erros de conexão ou problemas inesperados
+        alert('Erro ao fazer login');
     }
 });

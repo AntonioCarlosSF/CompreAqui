@@ -1,70 +1,96 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #2D8B52, #A5D6A7); /* Gradiente suave de verde */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-size: cover; /* Garante que o fundo cubra toda a tela */
-    background-position: center;
+    background-color: rgb(57, 47, 108);
+    color: rgb(208, 250, 248);
 }
 
 .container {
-    background-color: white;
-    width: 350px;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(208, 250, 248);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    position: relative; /* Para garantir que o conteúdo fique acima do fundo */
-    z-index: 1; /* Para que a caixa de login fique em cima de qualquer fundo */
+    max-width: 400px;
+    width: 100%;
 }
 
-.title {
-    font-size: 32px;
-    color: #2D8B52;
+h1 {
     margin-bottom: 20px;
-}
-
-label {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
-    text-align: left;
-    display: block;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #2D8B52;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #248C43;
+    font-size: 24px;
+    color: rgb(57, 47, 108);
 }
 
 form {
     display: flex;
     flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+    color: rgb(57, 47, 108);
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(57, 47, 108);
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: rgb(57, 47, 108);
+    box-shadow: 0 0 5px rgba(57, 47, 108, 0.5);
+}
+
+button {
+    padding: 10px 15px;
+    background-color: rgb(57, 47, 108);
+    color: rgb(208, 250, 248);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(46, 38, 92);
+}
+
+.link {
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgb(57, 47, 108); /* Ajustado para contraste */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: rgb(46, 38, 92);
+}
+.link-container {
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgb(57, 47, 108); /* Cor ajustada para contraste */
+}
+
+.link-container a {
+    color: rgb(57, 47, 108); /* Cor do link */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.link-container a:hover {
+    color: rgb(46, 38, 92);
 }
