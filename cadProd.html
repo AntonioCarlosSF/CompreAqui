@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(57, 47, 108);
+            color: rgb(208, 250, 248);
+        }
+
+        .container {
+            background-color: rgb(208, 250, 248);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: rgb(57, 47, 108);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            text-align: left;
+            font-weight: bold;
+            color: rgb(57, 47, 108);
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(57, 47, 108);
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: rgb(57, 47, 108);
+            box-shadow: 0 0 5px rgba(57, 47, 108, 0.5);
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: rgb(57, 47, 108);
+            color: rgb(208, 250, 248);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgb(46, 38, 92);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Produtos</h1>
+        <form action="/cadastrar-produto" method="POST">
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" step="0.01" required>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required>
+
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="eletronicos">Eletrônicos</option>
+                <option value="livros">Livros</option>
+                <option value="alimentos">Alimentos</option>
+                <option value="outros">Outros</option>
+            </select>
+
+            <button type="submit">Cadastrar Produto</button>
+        </form>
+    </div>
+</body>
+</html>
